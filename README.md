@@ -13,7 +13,7 @@ https://coxdocs.dev/ox_inventory
 
 ## 💾 Download
 
-https://github.com/communityox/ox_inventory/releases/latest/download/ox_inventory.zip
+https://github.com/tazonex/ox_inventory_edit/archive/refs/tags/ox_inventory.zip
 
 ## Supported frameworks
 
@@ -32,7 +32,7 @@ We do not guarantee compatibility or support for third-party resources.
 - Supports player-owned vehicles, licenses, and group systems implemented by frameworks.
 - Fully synchronised, allowing multiple players to [access the same inventory](https://user-images.githubusercontent.com/65407488/230926091-c0033732-d293-48c9-9d62-6f6ae0a8a488.mp4).
 
-## Preview
+## 📷 Preview
 <img width="2560" height="1440" alt="Ekran_Goruntusu_78" src="https://github.com/user-attachments/assets/834d6a36-360a-47d7-aeaf-deb06c29fb31" />
 <img width="2560" height="1440" alt="Ekran_Goruntusu_77" src="https://github.com/user-attachments/assets/56ba382a-ca3f-423a-b53a-4a26d77d4792" />
 <img width="2560" height="1440" alt="Ekran_Goruntusu_76" src="https://github.com/user-attachments/assets/9a0b55ec-a1f1-4e92-b32b-1548176abe74" />
