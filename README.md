@@ -2,11 +2,6 @@
 
 A complete inventory system for FiveM, implementing items, weapons, shops, and more without any strict framework dependency.
 
-![](https://img.shields.io/github/downloads/communityox/ox_inventory/total?logo=github)
-![](https://img.shields.io/github/downloads/communityox/ox_inventory/latest/total?logo=github)
-![](https://img.shields.io/github/contributors/communityox/ox_inventory?logo=github)
-![](https://img.shields.io/github/v/release/communityox/ox_inventory?logo=github)
-
 ##   !! Warning !!
 Don't forget to run pnpm build after downloading.
  
