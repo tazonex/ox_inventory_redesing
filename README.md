@@ -21,6 +21,7 @@ We do not guarantee compatibility or support for third-party resources.
 
 - [ox_core](https://github.com/communityox/ox_core)
 - [esx](https://github.com/esx-framework/esx_core)
+- [qbcore](https://github.com/qbcore-framework/qb-core)
 - [qbox](https://github.com/Qbox-project/qbx_core)
 - [nd_core](https://github.com/ND-Framework/ND_Core)
 
@@ -30,6 +31,12 @@ We do not guarantee compatibility or support for third-party resources.
 - Logging for important events, such as purchases, item movement, and item creation or removal.
 - Supports player-owned vehicles, licenses, and group systems implemented by frameworks.
 - Fully synchronised, allowing multiple players to [access the same inventory](https://user-images.githubusercontent.com/65407488/230926091-c0033732-d293-48c9-9d62-6f6ae0a8a488.mp4).
+
+## Preview
+<img width="2560" height="1440" alt="Ekran_Goruntusu_78" src="https://github.com/user-attachments/assets/834d6a36-360a-47d7-aeaf-deb06c29fb31" />
+<img width="2560" height="1440" alt="Ekran_Goruntusu_77" src="https://github.com/user-attachments/assets/56ba382a-ca3f-423a-b53a-4a26d77d4792" />
+<img width="2560" height="1440" alt="Ekran_Goruntusu_76" src="https://github.com/user-attachments/assets/9a0b55ec-a1f1-4e92-b32b-1548176abe74" />
+<img width="2560" height="1440" alt="Ekran_Goruntusu_75" src="https://github.com/user-attachments/assets/42d4c68e-4d28-4f2a-905d-50006f25e26f" />
 
 ### Items
 
