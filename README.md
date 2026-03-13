@@ -16,7 +16,7 @@ https://coxdocs.dev/ox_inventory
 
 ## 💾 Download
 
-https://github.com/tazonex/ox_inventory_edit/archive/refs/tags/ox_inventory.zip
+https://github.com/tazonex/ox_inventory_edit/releases/tag/ox_inventory
 
 ## Supported frameworks
 
