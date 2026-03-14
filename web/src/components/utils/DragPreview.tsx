@@ -55,7 +55,7 @@ const DragPreview: React.FC = () => {
           className="item-drag-preview"
           ref={element}
           style={{
-            transform: `translate(${currentOffset.x}px, ${currentOffset.y}px)`,
+            transform: `translate3d(${currentOffset.x}px, ${currentOffset.y}px, 0)`,
             backgroundImage: data.image,
           }}
         />

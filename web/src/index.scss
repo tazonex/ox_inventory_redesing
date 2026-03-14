@@ -44,6 +44,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  zoom: var(--ui-scale, 1);
 }
 
 code {
@@ -201,27 +202,44 @@ button:active {
   letter-spacing: vp(0.3);
 }
 
-.inventory-panel-close {
+.inventory-panel-btn-base {
   display: flex;
   align-items: center;
   justify-content: center;
   width: vp(28);
   height: vp(28);
   border-radius: vp(6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.inventory-panel-close {
+  @extend .inventory-panel-btn-base;
   border: vp(1) solid rgba(248, 113, 113, 0.2);
   background: rgba(248, 113, 113, 0.08);
   color: rgba(248, 113, 113, 0.7);
-  cursor: pointer;
-  transition: all 0.2s ease;
 
   &:hover {
     background: rgba(248, 113, 113, 0.15);
     border-color: rgba(248, 113, 113, 0.5);
     color: rgba(248, 113, 113, 1);
   }
+}
 
-  &:active {
-    transform: scale(0.92);
+.inventory-panel-settings {
+  @extend .inventory-panel-btn-base;
+  border: vp(1) solid rgba(156, 163, 175, 0.2);
+  background: rgba(156, 163, 175, 0.08);
+  color: rgba(156, 163, 175, 0.7);
+
+  &:hover {
+    background: rgba(156, 163, 175, 0.15);
+    border-color: rgba(156, 163, 175, 0.5);
+    color: rgba(255, 255, 255, 1);
   }
 }
 
@@ -245,6 +263,10 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: auto;
 }
 
 .useful-controls-dialog {
@@ -355,38 +377,7 @@ button:active {
   background-color: $borderColor;
 }
 
-.useful-controls-button {
-  position: fixed !important;
-  bottom: vp(32);
-  right: vp(32);
-  transition: all 0.2s ease !important;
-  border: vp(1) solid $borderColor !important;
-  color: white;
-  width: vp(44);
-  height: vp(44);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  fill: $textColorMuted;
-  border-radius: vp(12) !important;
-  background-color: rgba(12, 12, 14, 0.95) !important;
-  box-shadow: 0 vp(4) vp(20) rgba(0, 0, 0, 0.3);
 
-  svg {
-    width: vp(18);
-    height: vp(18);
-    transition: fill 0.2s ease;
-  }
-
-  &:hover {
-    background-color: $slotBackgroundHover !important;
-    border-color: $accentColor !important;
-    cursor: pointer;
-    transform: translateY(vp(-2));
-    box-shadow: 0 vp(6) vp(24) rgba(0, 0, 0, 0.4);
-    fill: $accentColor;
-  }
-}
 
 .useful-controls-exit-button {
   position: absolute !important;
@@ -419,10 +410,8 @@ button:active {
     pointer-events: none;
     z-index: 10;
     border-radius: vp(12);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: vp(128) vp(128);
-    opacity: 0.06;
+    /* Heavy SVG feTurbulence filter removed for scroll/drag performance */
+    background: rgba(255, 255, 255, 0.015);
   }
 }
 
@@ -654,11 +643,8 @@ button:active {
   pointer-events: none;
   border-radius: vp(8);
   overflow: hidden;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: vp(64) vp(64);
-  opacity: 0.06;
-  mix-blend-mode: overlay;
+  /* Heavy SVG feTurbulence filter and mix-blend-mode removed for performance */
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .inventory-slot-image {
@@ -904,10 +890,8 @@ button:active {
     pointer-events: none;
     z-index: 0;
     border-radius: vp(12);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: vp(128) vp(128);
-    opacity: 0.08;
+    /* Heavy SVG feTurbulence filter removed */
+    background: rgba(255, 255, 255, 0.015);
   }
 }
 
@@ -926,7 +910,6 @@ button:active {
     background-color: $slotBackgroundHover;
     border-color: $borderColorHover;
     transform: scale(1.05);
-    filter: brightness(1.1);
     z-index: 10;
   }
 
@@ -959,11 +942,8 @@ button:active {
   pointer-events: none;
   border-radius: vp(8);
   overflow: hidden;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: vp(64) vp(64);
-  opacity: 0.06;
-  mix-blend-mode: overlay;
+  /* Heavy SVG feTurbulence filter and mix-blend-mode removed */
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .hotbar-slot-number {
@@ -1075,19 +1055,6 @@ button:active {
   }
 }
 
-.item-notification-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: vp(12);
-  position: fixed;
-  bottom: 8vh;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  pointer-events: none;
-}
 
 .item-notification-box {
   display: flex;
@@ -1110,11 +1077,8 @@ button:active {
     z-index: 0;
     border-radius: vp(12);
     overflow: hidden;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: vp(128) vp(128);
-    opacity: 0.08;
-    mix-blend-mode: overlay;
+    /* Heavy SVG feTurbulence filter removed */
+    background: rgba(255, 255, 255, 0.015);
   }
 }
 
@@ -2015,6 +1979,15 @@ $danger: #f87171;
     flex-direction: column-reverse;
   }
 }
+
+.notify-pos-top-left { top: vp(32); left: vp(32); align-items: flex-start; }
+.notify-pos-top-center { top: vp(32); left: 50%; transform: translateX(-50%); align-items: center; }
+.notify-pos-top-right { top: vp(32); right: vp(32); align-items: flex-end; }
+.notify-pos-middle-left { top: 50%; left: vp(32); transform: translateY(-50%); align-items: flex-start; }
+.notify-pos-middle-right { top: 50%; right: vp(32); transform: translateY(-50%); align-items: flex-end; }
+.notify-pos-bottom-left { bottom: vp(32); left: vp(32); align-items: flex-start; }
+.notify-pos-bottom-center { bottom: vp(150); left: 50%; transform: translateX(-50%); align-items: center; }
+.notify-pos-bottom-right { bottom: vp(32); right: vp(32); align-items: flex-end; }
 
 /* ===================================================================
    PORTED FROM GRIDSTYLE – UsefulControls uc-* classes

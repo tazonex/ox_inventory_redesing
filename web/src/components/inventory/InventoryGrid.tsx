@@ -77,7 +77,7 @@ const getWeightColorClass = (percent: number): string => {
   return '';
 };
 
-const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
+const InventoryGrid: React.FC<{ inventory: Inventory; actionButton?: React.ReactNode }> = ({ inventory, actionButton }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const weight = useMemo(
     () => (inventory.maxWeight !== undefined ? Math.floor(getTotalWeight(inventory.items) * 1000) / 1000 : 0),
@@ -143,12 +143,15 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
             {itemCount} items
           </span>
         </div>
-        {inventory.maxWeight !== undefined && inventory.maxWeight > 0 && (
-          <div className={`inventory-weight-display ${getWeightColorClass(weightPercent)}`}>
-            <WeightIcon />
-            <span>{formatWeight(weight)}/{formatWeight(inventory.maxWeight)}</span>
-          </div>
-        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'calc((0.417vw + 0.741vh) / 2)' }}>
+          {inventory.maxWeight !== undefined && inventory.maxWeight > 0 && (
+            <div className={`inventory-weight-display ${getWeightColorClass(weightPercent)}`}>
+              <WeightIcon />
+              <span>{formatWeight(weight)}/{formatWeight(inventory.maxWeight)}</span>
+            </div>
+          )}
+          {actionButton}
+        </div>
       </div>
 
       {/* Search Bar */}

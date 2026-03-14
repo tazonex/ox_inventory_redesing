@@ -56,16 +56,7 @@ const ItemNotification = React.forwardRef(
   }
 );
 
-const POSITION_STYLES: Record<NotifyPosition, React.CSSProperties> = {
-  'top-left': { top: '3vh', left: '3vh', alignItems: 'flex-start' },
-  'top-center': { top: '3vh', left: '50%', transform: 'translateX(-50%)', alignItems: 'center' },
-  'top-right': { top: '3vh', right: '3vh', alignItems: 'flex-end' },
-  'middle-left': { top: '50%', left: '3vh', transform: 'translateY(-50%)', alignItems: 'flex-start' },
-  'middle-right': { top: '50%', right: '3vh', transform: 'translateY(-50%)', alignItems: 'flex-end' },
-  'bottom-left': { bottom: '3vh', left: '3vh', alignItems: 'flex-start' },
-  'bottom-center': { bottom: '14vh', left: '50%', transform: 'translateX(-50%)', alignItems: 'center' },
-  'bottom-right': { bottom: '3vh', right: '3vh', alignItems: 'flex-end' },
-};
+// Position styles moved to index.scss and applied via class names
 
 export const ItemNotificationsProvider = ({ children }: { children: React.ReactNode }) => {
   const [position, setPosition] = useState<NotifyPosition>(getNotifyPosition);
@@ -97,15 +88,13 @@ export const ItemNotificationsProvider = ({ children }: { children: React.ReactN
   });
 
   const upward = stacksUpward(position);
-  const posStyle = POSITION_STYLES[position];
 
   return (
     <ItemNotificationsContext.Provider value={{ add }}>
       {children}
       {createPortal(
         <TransitionGroup
-          className={`item-notification-container${upward ? ' item-notification-container--upward' : ''}`}
-          style={posStyle}
+          className={`item-notification-container notify-pos-${position}${upward ? ' item-notification-container--upward' : ''}`}
         >
           {queue.values.map((notification, index) => (
             <Fade key={`item-notification-${index}`}>

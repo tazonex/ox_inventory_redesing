@@ -20,6 +20,7 @@ function loadScale(): number {
 
 function applyCssVariable(scale: number) {
     document.documentElement.style.setProperty('--cell-size', `${BASE_CELL_VH * scale}vh`);
+    document.documentElement.style.setProperty('--ui-scale', String(scale));
 }
 
 currentScale = loadScale();

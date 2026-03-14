@@ -77,7 +77,16 @@ const Inventory: React.FC = () => {
             style={primary.panelStyle}
             onMouseDown={primary.onMouseDown}
           >
-            <LeftInventory />
+            <LeftInventory 
+              actionButton={
+                <button className="inventory-panel-settings" onClick={() => setInfoVisible(true)}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                </button>
+              }
+            />
           </div>
 
           {/* Secondary Panel - independently draggable */}
@@ -88,26 +97,20 @@ const Inventory: React.FC = () => {
               style={secondary.panelStyle}
               onMouseDown={secondary.onMouseDown}
             >
-              {/* Close X button in header */}
-              <div className="inventory-panel-header">
-                <span className="inventory-panel-header-label">{rightInventory.label || 'Inventory'}</span>
-                <button className="inventory-panel-close" onClick={() => fetchNui('exit')}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 6L6 18" /><path d="M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              <RightInventory />
+              <RightInventory 
+                actionButton={
+                  <button className="inventory-panel-close" onClick={() => fetchNui('exit')}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 6L6 18" /><path d="M6 6l12 12" />
+                    </svg>
+                  </button>
+                }
+              />
             </div>
           )}
 
           <Tooltip />
           <InventoryContext />
-          <button className="useful-controls-button" onClick={() => setInfoVisible(true)}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 524 524">
-              <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
-            </svg>
-          </button>
         </div>
       </Fade>
       <InventoryHotbar />
